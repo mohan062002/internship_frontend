@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {Route,Routes} from 'react-router-dom';
+import Home from './components/Home';
+import Login from './components/Login';
+import Register from './components/Register'; 
+import Dashbord from './components/Dashbord';
+
+import axios from 'axios';
+import Transporterdashbord from './components/Transporterdashbord';
+
+axios.defaults.baseURL = "https://goclock-internship.onrender.com";//setting default url
+axios.defaults.withCredentials=true;//seting with credentials for sending cookie from backend to frontend
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+   
+    <Routes>
+      <Route path="/" element={<Home/>}/>
+      <Route path="/login" element={<Login/>}/>
+      <Route path="/transporterdashbord" element={<Transporterdashbord/>}/>
+      <Route path="/register" element={<Register/>}/>
+      <Route path='/dashbord' element={<Dashbord/>}/>
+    </Routes>
     </div>
   );
 }
